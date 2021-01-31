@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         {/* Open Graph */}
         <meta property="og:title" content="Melvor Mastery Calculator" />
         <meta property="og:description" content="Calculate time and material requirements to max a skill's mastery in Melvor Idle." />
-        <meta property="og:image" content='public/index.png' />
+        <meta property="og:image" content={'public/index.png'} />
         <meta property="og:url" content="https://mastery-calculator.vercel.app/" />
 
         {/* Twitter */}
@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="twitter:url" content="/" />
         <meta name="twitter:title" content="Melvor Mastery Calculator" />
         <meta name="twitter:description" content="Calculate time and material requirements to max a skill's mastery in Melvor Idle." />
-        <meta name="twitter:image" content="public/index.png" />
+        <meta name="twitter:image" content={"public/index.png"} />
 
       </Head>
       <Navbar />
