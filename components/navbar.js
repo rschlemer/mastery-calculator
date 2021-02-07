@@ -30,7 +30,6 @@ export default function Navbar() {
                     <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex-shrink-0 flex items-center">
                             {/* image */}
-                            <Image src="/me.svg" width="48" height="36" />
                             <h1 className="dark:text-white font-large">Melvor Calculations</h1>
                         </div>
 
@@ -56,13 +55,13 @@ export default function Navbar() {
             <div className={show ? "block" : "hidden"}>
                 <div className="px-2 pt-2 pb-3 space-y-1">
                     <Link href="/">
-                        <a className="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">Melvor Calculator</a>
+                        <a className="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium">Melvor Calculator</a>
                     </Link>
                     <Link href="/probabilites">
-                        <a className="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">Probabilities</a>
+                        <a className="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium">Probabilities</a>
                     </Link>
                     <Link href="/bank">
-                        <a className="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">Bank</a>
+                        <a className="dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium">Bank</a>
                     </Link>
                 </div>
             </div>

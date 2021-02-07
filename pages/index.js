@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Component } from 'react';
 import { SaveArea } from 'components/importSave';
 import { SkillBar } from 'components/skillbar';
@@ -68,9 +67,7 @@ export default class Homepage extends Component {
                 <Head>
                     <title>Melvor Mastery Calculator</title>
                 </Head>
-                <div className="flex justify-center p-2">
-                    <Image src="/logo.svg" width="120" height="120" />
-                </div>
+
                 <div className="flex justify-center">
                     <h1 className="text-4xl text-center dark:text-gray-300">Melvor Mastery Calculator</h1>
                 </div>

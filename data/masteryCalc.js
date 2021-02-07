@@ -10,6 +10,7 @@ let PRESERVATION = { '3': 0.2, '5': 0.3, '13': 0.1, '14': 0.15, '15': 0.65, '19'
 class Player {
     constructor() {
         this.skills = {};
+        this.bankIdList = [];
     }
     loadPlayer() {
         for (var skillId in MASTERIES) {
@@ -62,6 +63,10 @@ class Player {
         }
     }
     loadData(masteries, bank) {
+        //update bank
+        this.bank = bank;
+        this.bankIdList = this.bank.map(x => x['id']);
+
         for (const [skillName, skill] of Object.entries(this.skills)) {
             //update skill pool
             skill.pool = masteries[skill.skillId]['pool'];
