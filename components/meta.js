@@ -19,7 +19,7 @@ class Meta extends Component {
                 {/* Open Graph */}
                 <meta property="og:title" content={SEO.title} />
                 <meta property="og:description" content={SEO.description} />
-                <meta property="og:image" content={SEO.image.props} />
+                <meta property="og:image" content={SEO.image} />
                 <meta property="og:url" content="/" />
 
                 {/* Twitter */}
