@@ -18,7 +18,7 @@ export default class Probabilities extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            probability: 0.0004901960784313725,
+            probability: 0.000490,
             trials: 10.0,
             amount: 1.0,
             exact: 0.0,
@@ -113,7 +113,7 @@ export default class Probabilities extends Component {
                     "magicAttackBonus": -3,
                     "rangedDefenceBonus": 0,
                     "magicDefenceBonus": 0,
-                    "probability": 0.024509803921568627
+                    "probability": 0.024510
                 },
                 {
                     "id": 138,
@@ -139,7 +139,7 @@ export default class Probabilities extends Component {
                     "magicAttackBonus": -6,
                     "rangedDefenceBonus": 12,
                     "magicDefenceBonus": -1,
-                    "probability": 0.014705882352941176
+                    "probability": 0.014706
                 },
                 {
                     "id": 134,
@@ -160,7 +160,7 @@ export default class Probabilities extends Component {
                     "defenceBonus": 0,
                     "attackSpeed": 2200,
                     "attackLevelRequired": 10,
-                    "probability": 0.014705882352941176
+                    "probability": 0.014706
                 },
                 {
                     "category": "Combat",
@@ -185,7 +185,7 @@ export default class Probabilities extends Component {
                     "magicAttackBonus": -8,
                     "rangedDefenceBonus": 18,
                     "magicDefenceBonus": -1,
-                    "probability": 0.00980392156862745
+                    "probability": 0.009804
                 },
                 {
                     "id": 135,
@@ -206,7 +206,7 @@ export default class Probabilities extends Component {
                     "defenceBonus": 0,
                     "attackSpeed": 2400,
                     "attackLevelRequired": 10,
-                    "probability": 0.00980392156862745
+                    "probability": 0.009804
                 },
                 {
                     "id": 136,
@@ -227,7 +227,7 @@ export default class Probabilities extends Component {
                     "defenceBonus": 0,
                     "attackSpeed": 3100,
                     "attackLevelRequired": 10,
-                    "probability": 0.00980392156862745
+                    "probability": 0.009804
                 },
                 {
                     "category": "Combat",
@@ -247,7 +247,7 @@ export default class Probabilities extends Component {
                     "defenceBonus": 0,
                     "attackSpeed": 2400,
                     "attackLevelRequired": 10,
-                    "probability": 0.00392156862745098
+                    "probability": 0.003922
                 },
                 {
                     "id": 137,
@@ -268,7 +268,7 @@ export default class Probabilities extends Component {
                     "defenceBonus": 0,
                     "attackSpeed": 3600,
                     "attackLevelRequired": 10,
-                    "probability": 0.00980392156862745
+                    "probability": 0.009804
                 },
                 {
                     "id": 140,
@@ -294,7 +294,7 @@ export default class Probabilities extends Component {
                     "magicAttackBonus": -21,
                     "rangedDefenceBonus": 20,
                     "magicDefenceBonus": -4,
-                    "probability": 0.0024509803921568627
+                    "probability": 0.002451
                 },
                 {
                     "id": 141,
@@ -320,7 +320,7 @@ export default class Probabilities extends Component {
                     "magicAttackBonus": -30,
                     "rangedDefenceBonus": 40,
                     "magicDefenceBonus": -6,
-                    "probability": 0.0004901960784313725
+                    "probability": 0.000490
                 }
             ]
         }
@@ -372,7 +372,7 @@ export default class Probabilities extends Component {
             totalProb += loot[1]
         }
         for (const [i, item] of result.entries()) {
-            item["probability"] = item["probability"] / totalProb
+            item["probability"] = (item["probability"] / totalProb).toFixed(6)
         }
         return result
     }
@@ -395,48 +395,63 @@ export default class Probabilities extends Component {
                     <title>Drop Probability Calculator</title>
                 </Head>
                 <h1 className="text-4xl text-center dark:text-gray-300">Drop Probability Calculator</h1>
-                <div className="grid grid-cols-5">
-                    {/* Col 1 onChange={(v) => this.updateMonster(v)}*/}
+                <div className="sm:grid sm:grid-cols-2 sm:justify-items-auto">
                     <div>
-                        <Select
-                            options={MONSTERS}
-                            values={[this.state.selectedMonster]}
-                            itemRenderer={this.customItemRenderer}
-                            placeholder="Select Monster"
-                            labelField="name"
-                            searchBy="name"
-                            onChange={(value) => this.selectMonster(value[0])}
-                            clearOnSelect={false}
-                            className="dark:bg-gray-100"
-                        />
-                    </div>
-                    {/* Col 2 */}
-                    <div>
-                        <Select
-                            options={this.state.itemList}
-                            values={[this.state.selectedItem]}
-                            itemRenderer={this.customItemRenderer}
-                            placeholder="Select Item"
-                            labelField="name"
-                            searchBy="name"
-                            onChange={(value) => this.selectItem(value[0])}
-                            className="dark:bg-gray-100"
-                        />
-                    </div>
-                    {/* Col 3-5 */}
-                    <div className="col-span-3">
-                        <div>
-                            <input value={this.state.probability} onChange={(e) => { this.setState({ probability: e.target.value }) }} />
-                            <input value={this.state.trials} onChange={(e) => { this.setState({ trials: e.target.value }) }} />
-                            <input value={this.state.amount} onChange={(e) => { this.setState({ amount: e.target.value }) }} />
-                            <button type='button' onClick={() => this.runCalcs()}>Calculate Probabilities</button>
+                        <div className="flex flex-wrap p-2 m-2">
+                            <p className="dark:text-gray-300 p-2 m-2">Select Monster</p>
+                            <Select
+                                options={MONSTERS}
+                                values={[this.state.selectedMonster]}
+                                itemRenderer={this.customItemRenderer}
+                                placeholder="Select Monster"
+                                labelField="name"
+                                searchBy="name"
+                                onChange={(value) => this.selectMonster(value[0])}
+                                clearOnSelect={false}
+                                className="dark:bg-gray-100 p-2 m-2"
+                            />
                         </div>
-                        <div>
-                            <p>{this.state.exact.toLocaleString('en', { style: 'percent', minimumFractionDigits: 2 })} chance of getting exacltly {this.state.amount} drops.</p>
-                            <p>{this.state.atLeast.toLocaleString('en', { style: 'percent', minimumFractionDigits: 2 })} chance of getting at least {this.state.amount} drops.</p>
-                            <p>{this.state.atMost.toLocaleString('en', { style: 'percent', minimumFractionDigits: 2 })} chance of getting at most {this.state.amount} drops.</p>
-                            <p>{this.state.fifty.toLocaleString('en')} trials required to have 50% chance of 1 drop</p>
-                            <p>{this.state.ninetyFive.toLocaleString('en')} trials required to have 95% chance of 1 drop</p>
+                        <div className="flex flex-wrap p-2 m-2">
+                            <p className="dark:text-gray-300 p-2 m-2">Select Item</p>
+                            <Select
+                                options={this.state.itemList}
+                                values={[this.state.selectedItem]}
+                                itemRenderer={this.customItemRenderer}
+                                placeholder="Select Item"
+                                labelField="name"
+                                searchBy="name"
+                                onChange={(value) => this.selectItem(value[0])}
+                                className="dark:bg-gray-100 p-2 m-2"
+                            />
+                        </div>
+                    </div>
+                    <div className="grid justify-items-start p-2 m-2">
+                        <div >
+                            <div className="flex-wrap flex">
+                                <input className="mx-1 px-1 text-black border-2 border-gray-800 w-32" value={this.state.probability} onChange={(e) => { this.setState({ probability: e.target.value }) }} />
+                                <p className="dark:text-gray-300 p-1 m-1 text-sm sm:text-base">Drop chance</p>
+                            </div>
+                            <div className="flex-wrap flex">
+                                <input className="mx-1 px-1 text-black border-2 border-gray-800 w-32" value={this.state.trials} onChange={(e) => { this.setState({ trials: e.target.value }) }} />
+                                <p className="dark:text-gray-300 p-1 m-1">Number of tries</p>
+                            </div>
+                            <div className="flex-wrap flex">
+                                <input className="mx-1 px-1 text-black border-2 border-gray-800 w-32" value={this.state.amount} onChange={(e) => { this.setState({ amount: e.target.value }) }} />
+                                <p className="dark:text-gray-300 p-1 m-1">Number of drops</p>
+                            </div>
+                            <button
+                                className="p-2 mx-1 rounded-md bg-green-500 text-white"
+                                type='button'
+                                onClick={() => this.runCalcs()}>
+                                Calculate Probabilities
+                            </button>
+                        </div>
+                        <div className="p-1">
+                            <p className="dark:text-gray-300">{this.state.exact.toLocaleString('en', { style: 'percent', minimumFractionDigits: 2 })} chance of getting exacltly {this.state.amount} drops.</p>
+                            <p className="dark:text-gray-300">{this.state.atLeast.toLocaleString('en', { style: 'percent', minimumFractionDigits: 2 })} chance of getting at least {this.state.amount} drops.</p>
+                            <p className="dark:text-gray-300">{this.state.atMost.toLocaleString('en', { style: 'percent', minimumFractionDigits: 2 })} chance of getting at most {this.state.amount} drops.</p>
+                            <p className="dark:text-gray-300">{this.state.fifty.toLocaleString('en')} trials required to have 50% chance of 1 drop</p>
+                            <p className="dark:text-gray-300">{this.state.ninetyFive.toLocaleString('en')} trials required to have 95% chance of 1 drop</p>
                         </div>
                     </div>
                 </div>
