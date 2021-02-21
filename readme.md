@@ -2,7 +2,7 @@
 
 ## Mastery
 - Load game save & select skill to show current mastery levels.
-- Select a item to simulate leveling
+- Select an item to simulate leveling to desired level.
 - Assumptions:
   - Player has unlocked everything to decrease action interval to lowest level.
   - Player has highest preservation setup except for no charge stone of Rhaelyx.
